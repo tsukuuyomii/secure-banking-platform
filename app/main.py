@@ -1,11 +1,14 @@
 from fastapi import FastAPI
 
+from app.core.config import settings
+
 app = FastAPI( 
-    title="Secure Banking Platform",
+    title="settings.app_name", 
     description="A security-focused cloud banking platform",
     version="1.0.0",
 )
 
 @app.get("/health")
 def health_check():
-    return {"status": "healthy"}
+    return {"status": "healthy",
+            "environment": settings.environment,}
